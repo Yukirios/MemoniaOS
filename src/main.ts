@@ -1,3 +1,5 @@
+import { RatingCard } from "./components/RatingCard.ts"
+import { ratings } from "./data/ratings"
 import './style.css'
 import { Window } from './components/Window'
 
@@ -9,44 +11,22 @@ if (!app) {
 
 app.innerHTML = Window()
 
-const status = document.querySelector<HTMLParagraphElement>('#status-text')
+const container = document.querySelector<HTMLDivElement>("#rating-container")
 
-if (!status) {
-    throw new Error('Status element not found')
-}
+if (!container) {
 
-const ratings: Record<string, string> = {
-
-    "1":"🗑️ В корзине что-то появилось",
-
-    "2":"🤧 Носяра шмыгает",
-
-    "3":"✝️ Прости, Господи...",
-
-    "4":"🩳 Наши штаны сухи, капитан",
-
-    "5":"👑 Уфф... уфф... уфф..."
+    throw new Error("Rating container not found")
 
 }
 
-window.addEventListener("keydown",(event)=>{
 
-    const text = ratings[event.key]
 
-    if (text) {
-
-    status.textContent = "Чем это тут пахнет..."
-
-    status.style.opacity = "0.5"
-
-    setTimeout(() => {
-
-        status.textContent = text
-
-        status.style.opacity = "1"
-
-    }, 1000)
-
-}
-
+window.addEventListener("keydown", (event) => {
+    const rating = ratings.find(r => r.key === event.key)
+    if (rating) {
+        container.innerHTML = "Чем это так пахнет?..."
+        setTimeout(() => {
+            container.innerHTML = RatingCard(rating)
+        }, 1000)
+    }
 })

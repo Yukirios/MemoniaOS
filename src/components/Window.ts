@@ -7,7 +7,7 @@ export function Window(): string {
 
                 <div class="titlebar">
 
-    <span>MemoniaOS v0.0.6</span>
+    <span>MemoniaOS v0.0.7</span>
 
     <div class="window-buttons">
 
@@ -25,13 +25,9 @@ export function Window(): string {
 
                     <h1>MemoniaOS</h1>
 
-                    <div class="status">
-
-    <p id="status-text">
-        Нажмите клавишу 1–5
-    </p>
-
-</div>
+                    <div id="rating-container">
+                    
+                    </div>
 
                 </div>
 

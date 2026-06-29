@@ -33,10 +33,20 @@ window.addEventListener("keydown",(event)=>{
 
     const text = ratings[event.key]
 
-    if(text){
+    if (text) {
+
+    status.textContent = "Чем это тут пахнет..."
+
+    status.style.opacity = "0.5"
+
+    setTimeout(() => {
 
         status.textContent = text
 
-    }
+        status.style.opacity = "1"
+
+    }, 1000)
+
+}
 
 })

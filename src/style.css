@@ -1,0 +1,74 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    background:#111;
+    font-family:Segoe UI, sans-serif;
+    overflow:hidden;
+}
+
+#app{
+    width:100%;
+    height:100%;
+}
+
+.os{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#111;
+}
+
+.window{
+
+    width:700px;
+
+    border:2px solid #4b4b4b;
+
+    background:#1c1c1c;
+
+    color:white;
+
+    box-shadow:0 0 40px rgba(0,0,0,.6);
+
+}
+
+.titlebar{
+
+    background:#2d2d2d;
+
+    padding:10px 15px;
+
+    font-weight:bold;
+
+}
+
+.content{
+
+    padding:50px;
+
+    text-align:center;
+
+}
+
+h1{
+
+    margin-bottom:20px;
+
+}
+
+p{
+
+    color:#bdbdbd;
+
+}

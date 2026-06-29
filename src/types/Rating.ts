@@ -10,4 +10,6 @@ export interface Rating {
 
     description:string
 
+    color:string
+
 }

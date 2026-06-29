@@ -167,12 +167,15 @@ p{
 
     animation:fadeIn .35s ease;
 
+    transition:
+    border-color .25s,
+    box-shadow .25s;
 }
 
 .rating-icon{
 
     font-size:52px;
-
+    transition:color .25s;
 }
 
 .rating-title{
@@ -185,6 +188,7 @@ p{
 
     color:var(--text);
 
+    transition:color .25s;
 }
 
 .rating-description{

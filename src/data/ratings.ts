@@ -12,7 +12,9 @@ export const ratings: Rating[] = [
 
         title:"В корзине что-то появилось...",
 
-        description:"Профессионально удаляем блядь"
+        description:"Профессионально удаляем блядь",
+        
+        color:"#D9534F"
 
     },
 
@@ -26,7 +28,9 @@ export const ratings: Rating[] = [
 
         title:"Носяра шмыгает",
 
-        description:"Воняет, но терпимо..."
+        description:"Воняет, но терпимо...",
+        
+        color:"#8FA3B8"
 
     },
 
@@ -40,8 +44,9 @@ export const ratings: Rating[] = [
 
         title:"Прости, Господи...",
 
-        description:"Терпимо, но ужасно..."
+        description:"Терпимо, но ужасно...",
 
+        color:"#D38B2F"
     },
 
     {
@@ -54,8 +59,9 @@ export const ratings: Rating[] = [
 
         title:"Наши штаны сухи, капитан",
 
-        description:"Продолжаем поиск."
+        description:"Продолжаем поиск.",
 
+        color:"#4FA3D9"
     },
 
     {
@@ -68,8 +74,9 @@ export const ratings: Rating[] = [
 
         title:"Уфф... уфф... уфф...",
 
-        description:"Кандидат и точка."
+        description:"Кандидат и точка.",
 
+        color:"#D4AF37"
     }
 
 ]

@@ -124,3 +124,28 @@ p{
     color:var(--text);
 
 }
+.status{
+
+    margin-top:30px;
+
+    min-height:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#status-text{
+
+    font-size:18px;
+
+    color:var(--accent);
+
+    font-weight:600;
+
+    transition:.25s;
+
+}

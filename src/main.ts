@@ -1,5 +1,6 @@
 import { RatingCard } from "./components/RatingCard.ts"
 import { ratings } from "./data/ratings"
+import { RatingService } from "./services/RatingService";
 import './style.css'
 import { Window } from './components/Window'
 
@@ -22,7 +23,7 @@ if (!container) {
 
 
 window.addEventListener("keydown", (event) => {
-    const rating = ratings.find(r => r.key === event.key)
+    const rating = RatingService.getByKey(event.key)
     if (rating) {
         container.innerHTML = "Чем это так пахнет?..."
         setTimeout(() => {

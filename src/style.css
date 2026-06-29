@@ -149,3 +149,67 @@ p{
     transition:.25s;
 
 }
+.rating-card{
+
+    width:320px;
+
+    margin:40px auto;
+
+    padding:25px;
+
+    border:1px solid var(--border);
+
+    background:rgba(255,255,255,.03);
+
+    border-radius:12px;
+
+    text-align:center;
+
+    animation:fadeIn .35s ease;
+
+}
+
+.rating-icon{
+
+    font-size:52px;
+
+}
+
+.rating-title{
+
+    margin-top:15px;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:var(--text);
+
+}
+
+.rating-description{
+
+    margin-top:12px;
+
+    color:var(--muted);
+
+}
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

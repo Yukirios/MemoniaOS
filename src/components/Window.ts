@@ -1,3 +1,5 @@
+import { Archive } from "./Archive";
+
 export function Window(): string {
 
     return `
@@ -7,26 +9,36 @@ export function Window(): string {
 
                 <div class="titlebar">
 
-    <span>MemoniaOS v0.1.0 RC</span>
+                    <span>MemoniaOS v0.1.0 RC</span>
 
-    <div class="window-buttons">
+                    <div class="window-buttons">
 
-        <span>─</span>
+                        <span>─</span>
+                        <span>□</span>
+                        <span>✕</span>
 
-        <span>□</span>
+                    </div>
 
-        <span>✕</span>
-
-    </div>
-
-</div>
+                </div>
 
                 <div class="content">
 
-                    <h1>MemoniaOS</h1>
+                    <div class="workspace">
 
-                    <div id="rating-container">
-                    
+                        <section class="evaluation">
+
+                            <h1>MemoniaOS</h1>
+
+                            <div id="rating-container"></div>
+
+                        </section>
+
+                        <aside id="archive-container">
+
+                            ${Archive([])}
+
+                        </aside>
+
                     </div>
 
                 </div>
@@ -34,6 +46,6 @@ export function Window(): string {
             </div>
 
         </div>
-    `
+    `;
 
 }

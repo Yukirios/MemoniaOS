@@ -548,3 +548,36 @@ p{
     transition:color .25s ease;
 
 }
+.archive-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:6px 0;
+
+    animation:archiveEnter .25s ease-out;
+
+}
+
+@keyframes archiveEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-8px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

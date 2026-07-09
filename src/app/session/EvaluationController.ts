@@ -1,11 +1,14 @@
 import { RatingCard } from "../../components/RatingCard";
+import { Archive } from "../../components/Archive";
 import { RatingService } from "../../services/RatingService";
+import { ArchiveService } from "../../services/ArchiveService";
 import { StatusService } from "../../services/StatusService";
 import { loadingMessages } from "../../data/loadingMessages";
 
 export class EvaluationController {
 
     private static container: HTMLDivElement;
+    private static archiveContainer: HTMLDivElement;
 
     private static isEvaluating = false;
 
@@ -19,6 +22,17 @@ export class EvaluationController {
         }
 
         this.container = container;
+
+        const archiveContainer =
+            app.querySelector<HTMLDivElement>("#archive-container");
+
+        if (!archiveContainer) {
+            throw new Error("Archive container not found");
+        }
+
+        this.archiveContainer = archiveContainer;
+
+        this.renderArchive();
 
         StatusService.initialize();
         StatusService.ready();
@@ -49,6 +63,9 @@ export class EvaluationController {
 
             this.showRating(rating);
 
+            ArchiveService.add(rating);
+            this.renderArchive();
+
             StatusService.verdict();
 
             setTimeout(() => {
@@ -60,6 +77,13 @@ export class EvaluationController {
             this.isEvaluating = false;
 
         }, 1500);
+
+    }
+
+    private static renderArchive(): void {
+
+        this.archiveContainer.innerHTML =
+            Archive(ArchiveService.getAll());
 
     }
 

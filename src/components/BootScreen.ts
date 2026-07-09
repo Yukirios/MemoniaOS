@@ -1,10 +1,10 @@
-export function BootScreen(): string {
+export function BootScreen(message: string): string {
 
     return `
 
         <div class="boot">
 
-            <div class="boot-title">
+            <div class="boot-logo">
 
                 MemoniaOS
 
@@ -12,19 +12,19 @@ export function BootScreen(): string {
 
             <div class="boot-version">
 
-                v0.1.0 RC
+                Version 0.1.0 RC
 
             </div>
 
-            <div class="boot-status">
+            <div id="boot-message" class="boot-message">
 
-                Чем это так пахнет...
+                ${message}
 
             </div>
 
             <div class="boot-bar">
 
-                <div id="boot-progress"></div>
+                <div id="boot-progress" class="boot-progress"></div>
 
             </div>
 

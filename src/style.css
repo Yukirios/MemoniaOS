@@ -217,3 +217,67 @@ p{
     }
 
 }
+.boot{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+}
+
+.boot-logo{
+
+    font-size:42px;
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+}
+
+.boot-version{
+
+    color:var(--muted);
+
+    margin-bottom:40px;
+
+}
+
+.boot-message{
+
+    color:var(--accent);
+
+    margin-bottom:20px;
+
+    min-height:24px;
+
+}
+
+.boot-bar{
+
+    width:340px;
+
+    height:10px;
+
+    border:1px solid var(--border);
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+.boot-progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--accent);
+
+    transition:width .12s linear;
+
+}

@@ -4,13 +4,11 @@ export class KeyboardController {
 
     static enable() {
 
-        window.addEventListener("keydown", this.onKeyDown);
+        window.addEventListener("keydown", (event) => {
 
-    }
+            EvaluationController.evaluate(event.key);
 
-    private static onKeyDown(event: KeyboardEvent) {
-
-        EvaluationController.evaluate(event.key);
+        });
 
     }
 

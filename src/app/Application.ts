@@ -1,6 +1,9 @@
 import { BootController } from "./boot/BootController";
+import { SessionController } from "./session/SessionController";
+import { EvaluationController } from "./session/EvaluationController";
+import { KeyboardController } from "./input/KeyboardController";
 
-export function startApplication() {
+export async function startApplication() {
 
     const app = document.querySelector<HTMLDivElement>("#app");
 
@@ -8,6 +11,12 @@ export function startApplication() {
         throw new Error("App root not found");
     }
 
-    BootController.start(app);
+    await BootController.start(app);
+
+    SessionController.start(app);
+
+    EvaluationController.initialize(app);
+
+    KeyboardController.enable();
 
 }

@@ -1,48 +1,43 @@
 import { BootScreen } from "../../components/BootScreen";
-import { Window } from "../../components/Window";
-
 import { bootMessages } from "../../data/messages";
-
-import { EvaluationController } from "../session/EvaluationController";
-import { KeyboardController } from "../input/KeyboardController";
 
 export class BootController {
 
-    static start(app: HTMLDivElement) {
+    static start(app: HTMLDivElement): Promise<void> {
 
-        const message =
-            bootMessages[Math.floor(Math.random() * bootMessages.length)];
+        return new Promise((resolve) => {
 
-        app.innerHTML = BootScreen(message);
+            const message =
+                bootMessages[Math.floor(Math.random() * bootMessages.length)];
 
-        const progress =
-            app.querySelector<HTMLDivElement>("#boot-progress");
+            app.innerHTML = BootScreen(message);
 
-        if (!progress) {
-            throw new Error("Boot progress not found");
-        }
+            const progress =
+                app.querySelector<HTMLDivElement>("#boot-progress");
 
-        let value = 0;
-
-        const timer = setInterval(() => {
-
-            value += 10;
-
-            progress.style.width = `${value}%`;
-
-            if (value >= 100) {
-
-                clearInterval(timer);
-
-                app.innerHTML = Window();
-
-                EvaluationController.initialize(app);
-
-                KeyboardController.enable();
-
+            if (!progress) {
+                throw new Error("Boot progress not found");
             }
 
-        }, 120);
+            let value = 0;
+
+            const timer = setInterval(() => {
+
+                value += 10;
+
+                progress.style.width = `${value}%`;
+
+                if (value >= 100) {
+
+                    clearInterval(timer);
+
+                    resolve();
+
+                }
+
+            }, 120);
+
+        });
 
     }
 

@@ -1,5 +1,4 @@
 import { RatingCard } from "../../components/RatingCard";
-
 import { RatingService } from "../../services/RatingService";
 
 export class EvaluationController {
@@ -25,27 +24,13 @@ export class EvaluationController {
 
         if (!rating) return;
 
-        this.showLoading();
+        this.container.innerHTML = "Чем это так пахнет?...";
 
         setTimeout(() => {
 
-            this.showRating(rating);
+            this.container.innerHTML = RatingCard(rating);
 
         }, 1000);
-
-    }
-
-    private static showLoading() {
-
-        this.container.innerHTML = "Чем это так пахнет?...";
-
-    }
-
-    private static showRating(rating: ReturnType<typeof RatingService.getByKey>) {
-
-        if (!rating) return;
-
-        this.container.innerHTML = RatingCard(rating);
 
     }
 

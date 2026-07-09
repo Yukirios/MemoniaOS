@@ -6,6 +6,8 @@ export class EvaluationController {
 
     private static container: HTMLDivElement;
 
+    private static isEvaluating = false;
+
     static initialize(app: HTMLDivElement) {
 
         const container =
@@ -21,9 +23,17 @@ export class EvaluationController {
 
     static evaluate(key: string) {
 
+        if (this.isEvaluating) {
+            return;
+        }
+
         const rating = RatingService.getByKey(key);
 
-        if (!rating) return;
+        if (!rating) {
+            return;
+        }
+
+        this.isEvaluating = true;
 
         const animation = this.showLoading();
 
@@ -32,6 +42,8 @@ export class EvaluationController {
             clearInterval(animation);
 
             this.showRating(rating);
+
+            this.isEvaluating = false;
 
         }, 1500);
 

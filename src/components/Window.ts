@@ -9,7 +9,7 @@ export function Window(): string {
 
                 <div class="titlebar">
 
-                    <span>MemoniaOS v0.1.0 RC</span>
+                    <span>MemoniaOS v0.2.0 RC</span>
 
                     <div class="window-buttons">
 

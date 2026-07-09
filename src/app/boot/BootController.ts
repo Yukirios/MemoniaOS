@@ -1,5 +1,5 @@
 import { BootScreen } from "../../components/BootScreen";
-import { bootMessages } from "../../data/messages";
+import { bootSequence } from "../../data/bootSequence";
 
 export class BootController {
 
@@ -7,37 +7,62 @@ export class BootController {
 
         return new Promise((resolve) => {
 
-            const message =
-                bootMessages[Math.floor(Math.random() * bootMessages.length)];
+            app.innerHTML = BootScreen(bootSequence[0].message);
 
-            app.innerHTML = BootScreen(message);
+            const message =
+                app.querySelector<HTMLDivElement>("#boot-message");
 
             const progress =
                 app.querySelector<HTMLDivElement>("#boot-progress");
 
-            if (!progress) {
-                throw new Error("Boot progress not found");
+            if (!message || !progress) {
+                throw new Error("Boot elements not found");
             }
 
-            let value = 0;
+            let index = 0;
 
-            const timer = setInterval(() => {
+            this.renderStep(message, progress, index);
 
-                value += 10;
+            const timer = window.setInterval(() => {
 
-                progress.style.width = `${value}%`;
+                index++;
 
-                if (value >= 100) {
+                if (index >= bootSequence.length) {
 
                     clearInterval(timer);
 
                     resolve();
 
+                    return;
+
                 }
 
-            }, 120);
+                this.renderStep(message, progress, index);
+
+            }, 400);
 
         });
+
+    }
+
+    private static renderStep(
+
+        message: HTMLDivElement,
+
+        progress: HTMLDivElement,
+
+        index: number
+
+    ): void {
+
+        const step = bootSequence[index];
+
+        message.textContent = step.message;
+
+        const percent =
+            ((index + 1) / bootSequence.length) * 100;
+
+        progress.style.width = `${percent}%`;
 
     }
 

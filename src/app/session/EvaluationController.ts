@@ -25,11 +25,11 @@ export class EvaluationController {
 
         if (!rating) return;
 
-        const loadingAnimation = this.showLoading();
+        const animation = this.showLoading();
 
         setTimeout(() => {
 
-            clearInterval(loadingAnimation);
+            clearInterval(animation);
 
             this.showRating(rating);
 
@@ -65,7 +65,10 @@ export class EvaluationController {
 
         if (!rating) return;
 
-        this.container.innerHTML = RatingCard(rating);
+        this.container.innerHTML =
+            `<div class="rating-enter">
+                ${RatingCard(rating)}
+            </div>`;
 
     }
 

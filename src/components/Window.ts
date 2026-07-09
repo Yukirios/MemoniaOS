@@ -1,4 +1,5 @@
 import { Archive } from "./Archive";
+import { StatusBar } from "./StatusBar";
 
 export function Window(): string {
 
@@ -9,7 +10,7 @@ export function Window(): string {
 
                 <div class="titlebar">
 
-                    <span>MemoniaOS v0.2.0 RC</span>
+                    <span>MemoniaOS v0.2.1 RC</span>
 
                     <div class="window-buttons">
 
@@ -42,6 +43,8 @@ export function Window(): string {
                     </div>
 
                 </div>
+
+                ${StatusBar("READY")}
 
             </div>
 

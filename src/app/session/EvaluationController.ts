@@ -1,5 +1,6 @@
 import { RatingCard } from "../../components/RatingCard";
 import { RatingService } from "../../services/RatingService";
+import { StatusService } from "../../services/StatusService";
 import { loadingMessages } from "../../data/loadingMessages";
 
 export class EvaluationController {
@@ -8,7 +9,7 @@ export class EvaluationController {
 
     private static isEvaluating = false;
 
-    static initialize(app: HTMLDivElement) {
+    static initialize(app: HTMLDivElement): void {
 
         const container =
             app.querySelector<HTMLDivElement>("#rating-container");
@@ -19,9 +20,12 @@ export class EvaluationController {
 
         this.container = container;
 
+        StatusService.initialize();
+        StatusService.ready();
+
     }
 
-    static evaluate(key: string) {
+    static evaluate(key: string): void {
 
         if (this.isEvaluating) {
             return;
@@ -35,6 +39,8 @@ export class EvaluationController {
 
         this.isEvaluating = true;
 
+        StatusService.scanning();
+
         const animation = this.showLoading();
 
         setTimeout(() => {
@@ -42,6 +48,14 @@ export class EvaluationController {
             clearInterval(animation);
 
             this.showRating(rating);
+
+            StatusService.verdict();
+
+            setTimeout(() => {
+
+                StatusService.ready();
+
+            }, 1000);
 
             this.isEvaluating = false;
 
@@ -73,9 +87,11 @@ export class EvaluationController {
 
     private static showRating(
         rating: ReturnType<typeof RatingService.getByKey>
-    ) {
+    ): void {
 
-        if (!rating) return;
+        if (!rating) {
+            return;
+        }
 
         this.container.innerHTML =
             `<div class="rating-enter">

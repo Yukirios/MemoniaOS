@@ -1,5 +1,5 @@
 import "./style.css";
 
-import { startApplication } from "./app/Application";
+import { Application } from "./app/Application";
 
-startApplication();
+Application.start();

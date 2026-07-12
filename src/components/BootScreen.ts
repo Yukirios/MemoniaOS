@@ -12,7 +12,7 @@ export function BootScreen(message: string): string {
 
             <div class="boot-version">
 
-                Version 0.2.2 RC
+                Version 0.3.0 RC - Теперь с поддержкой Материализации!
 
             </div>
 

@@ -6,15 +6,9 @@ export function Archive(ratings: Rating[]): string {
 
         return `
             <div class="archive">
-
-                <div class="archive-title">
-                    MEMORY ARCHIVE
-                </div>
-
                 <div class="archive-empty">
                     No memories yet...
                 </div>
-
             </div>
         `;
 
@@ -23,26 +17,15 @@ export function Archive(ratings: Rating[]): string {
     return `
         <div class="archive">
 
-            <div class="archive-title">
-                MEMORY ARCHIVE
-            </div>
+            <div class="archive-ribbon">
 
-            <div class="archive-list">
-
-                ${ratings.map((rating) => `
-
-                    <div class="archive-item">
-
-                        <span class="archive-icon">
-                            ${rating.icon}
-                        </span>
-
-                        <span class="archive-name">
-                            ${rating.title}
-                        </span>
-
-                    </div>
-
+                ${ratings.map(rating => `
+                    <span
+                        class="archive-icon"
+                        title="${rating.message}"
+                    >
+                        ${rating.icon}
+                    </span>
                 `).join("")}
 
             </div>

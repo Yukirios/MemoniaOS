@@ -1,22 +1,27 @@
 import { BootController } from "./boot/BootController";
 import { SessionController } from "./session/SessionController";
-import { EvaluationController } from "./session/EvaluationController";
-import { KeyboardController } from "./input/KeyboardController";
 
-export async function startApplication() {
+import { ThemeService } from "../services/ThemeService";
+import { MaterializationService } from "../services/MaterializationService";
 
-    const app = document.querySelector<HTMLDivElement>("#app");
+export class Application {
 
-    if (!app) {
-        throw new Error("App root not found");
+    static async start(): Promise<void> {
+
+        const app = document.querySelector<HTMLDivElement>("#app");
+
+        if (!app) {
+            throw new Error("App root not found");
+        }
+
+        ThemeService.initialize();
+
+        await BootController.start(app);
+
+        SessionController.start(app);
+
+        await MaterializationService.start();
+
     }
-
-    await BootController.start(app);
-
-    SessionController.start(app);
-
-    EvaluationController.initialize(app);
-
-    KeyboardController.enable();
 
 }
